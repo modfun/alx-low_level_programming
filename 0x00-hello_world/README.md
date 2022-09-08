@@ -1,4 +1,4 @@
-Project 0x00-Hello_world
+# Project '0x00-Hello_world'
 
 # Learning Objectives
 Why C programming is awesome
