@@ -1,0 +1,4 @@
+*.out
+gcc.sh
+git.sh
+shell.sh
