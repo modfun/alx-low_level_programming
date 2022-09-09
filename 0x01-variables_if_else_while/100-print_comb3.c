@@ -25,12 +25,6 @@ int main(void)
 				}
 			}
 		}
-		if (tens != 56 && ones < 57)
-		{
-			putchar(',');
-			putchar(' ');
-		}
-		
 	}
 	putchar('\n');
 
