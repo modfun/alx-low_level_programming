@@ -7,31 +7,33 @@
 **/
 int main(void)
 {
-	int a = 0;
-	int b;
+	int n1, n2;
+	n1 = 0;
 
-	while (a <= 98)
+	while (n1 <= 98)
 	{
-		b = a + 1;
-		while (b <= 99)
+		n2 = n1 + 1;
+
+		while (n2 <= 99)
 		{
-			putchar(a / 10 % 10 + '0');
-			putchar(a % 10 + '0');
+			putchar(n1 / 10 % 10 + '0');
+			putchar(n1 % 10 + '0');
 			putchar(' ');
-			putchar(b / 10 % 10 + '0');
-			putchar(b % 10 + '0');
-			if (a == 98 && b == 99)
-			{
+			putchar(n2 / 10 % 10 + '0');
+			putchar(n2 % 10 + '0');
+
+			if (n1 == 98 && n2 == 99)
 				putchar('\n');
-			}
 			else
 			{
 				putchar(',');
 				putchar(' ');
 			}
-			b++;
+
+			n2++;
 		}
-		a++;
+
+		n1++;
 	}
 
 	return (0);
