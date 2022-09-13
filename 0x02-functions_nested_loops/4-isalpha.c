@@ -2,7 +2,7 @@
 
 /**
  * _isalpha - checks if the char is alphabetical
- * @c:	a variable holding an int value
+ * @c:	a variable holding an int value representing char
  *
  * Return: zero or one (True / False)
  */
