@@ -16,9 +16,9 @@ int main(void)
 
 	for (i = 0; i < 50; i++)
 	{
-		fib = j + k;
-		k = j;
-		j = fib;
+		fib = k + j;
+		j = k;
+		k = fib;
 
 		printf(", %ld", fib);
 	}
