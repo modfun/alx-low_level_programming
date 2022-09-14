@@ -1,25 +1,31 @@
 #include <stdio.h>
 
 /**
- * main - print even-valued fibonacci numbers
+ * main - print 50 fibonacci numbers
  *
  * Return: Always 0 (success)
  */
 int main(void)
 {
-	int i = 1, j = 2, total = 0;
-	int k;
+	long i, j, fib, s;
 
-	while (j < 4000000)
+	i = 1;
+	j = 2;
+	fib = 2;
+	s = 0;
+
+	while (fib < 4000000)
 	{
-		if (j % 2 == 0)
-			total += j;
+		if (fib % 2 == 0)
+			s += fib;
 
-		k = j;
-		j += i;
-		i = k;
+		fib = j + i;
+		i = j;
+		j = fib;
+
 	}
-	printf("%d\n", total);
+
+	printf("%ld\n", s);
 
 	return (0);
 }
