@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 /**
- * main - print 50 fibonacci numbers
+ * main - print the sum of even-valued fibonacci numbers
+ * under 4 milion
  *
  * Return: Always 0 (success)
  */
