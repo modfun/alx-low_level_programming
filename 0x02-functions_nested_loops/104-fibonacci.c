@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-#define LARGEST 10000000000
-
 /**
  * main - print 98 fibonacci sequenece numbers
  *
@@ -10,31 +8,38 @@
 int main(void)
 {
 
-	unsigned long int fr1 = 0, bk1 = 1, fr2 = 0, bk2 = 2;
-	unsigned long int hold1, hold2, hold3;
-	int count;
+	unsigned long int fnum_1 = 0, bnum_1 = 1, fnum_2 = 0, bnum_2 = 2;
+	unsigned long int tmp_f, tmp_b, tmp;
+	int i;
+	const unsigned long int BIG = 10000000000;
 
-	printf("%lu, %lu, ", bk1, bk2);
-	for (count = 2; count < 98; count++)
+	printf("%lu, %lu", bnum_1, bnum_2);
+
+	for (i = 2; i < 98; i++)
 	{
-		if (bk1 + bk2 > LARGEST || fr2 > 0 || fr1 > 0)
+		if (fnum_1 > 0 || fnum_2 > 0 || (bnum_2	+ bnum_1) > BIG)
 		{
-			hold1 = (bk1 + bk2) / LARGEST;
-			hold2 = (bk1 + bk2) % LARGEST;
-			hold3 = fr1 + fr2 + hold1;
-			fr1 = fr2, fr2 = hold3;
-			bk1 = bk2, bk2 = hold2;
-			printf("%lu%010lu", fr2, bk2);
+			tmp_f = (bnum_2	+ bnum_1) / BIG;
+			tmp_b = (bnum_2 + bnum_1) % BIG;
+			tmp = tmp_f + (fnum_2 + fnum_1);
+			fnum_1 = fnum_2;
+			fnum_2 = tmp;
+
+			bnum_1 = bnum_2;
+			bnum_2 = tmp_b;
+
+			printf(", %lu%lu", fnum_2, bnum_2);
 		}
 		else
 		{
-			hold2 = bk1 + bk2;
-			bk1 = bk2, bk2 = hold2;
-			printf("%lu", bk2);
+			tmp = bnum_2 + bnum_1;
+			bnum_1 = bnum_2;
+			bnum_2 = tmp;
+
+			printf(", %lu", bnum_2);
 		}
-		if (count != 97)
-			printf(", ");
 	}
+
 	printf("\n");
 
 	return (0);
