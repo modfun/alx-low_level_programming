@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <inttypes.h>
 
 /**
  * main - print 98 fibonacci sequenece numbers
@@ -7,12 +8,12 @@
  */
 int main(void)
 {
-	double i, j, k, fib;
+	uint64_t i, j, k, fib;
 
 	j = 1;
 	k = 2;
 
-	printf("%.0f, %.0f", j, k);
+	printf("%"PRIu64", %"PRIu64"", j, k);
 
 	for (i = 0; i < 96; i++)
 	{
@@ -20,7 +21,7 @@ int main(void)
 		j = k;
 		k = fib;
 
-		printf(", %.0f", fib);
+		printf(", %"PRIu64"", fib);
 	}
 
 	printf("\n");
