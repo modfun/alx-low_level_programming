@@ -10,6 +10,12 @@ void print_number(int n)
 {
 	unsigned int l, m, i, j, div;
 
+	if (n < 0)
+	{
+		n = n * -1;
+		_putchar('-');
+	}
+
 	l = n;
 	m = 0;
 	if (l == 0)
@@ -18,12 +24,6 @@ void print_number(int n)
 	{
 		l = l / 10;
 		++m;
-	}
-
-	if (n < 0)
-	{
-		n = n * -1;
-		_putchar('-');
 	}
 
 	for (i = m; i > 0; i--)
