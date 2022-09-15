@@ -16,6 +16,7 @@ void print_number(int n)
 		_putchar('-');
 	}
 
+	/* find the number of digits in n */
 	l = n;
 	m = 0;
 	if (l == 0)
@@ -26,6 +27,7 @@ void print_number(int n)
 		++m;
 	}
 
+	/* print n using form (n / 10^t) % 10 such that t is [m-1:1] */
 	for (i = m; i > 0; i--)
 	{
 		div = 1;
