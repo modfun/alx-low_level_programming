@@ -8,7 +8,7 @@
  */
 void print_number(int n)
 {
-	long l, m, i, j, div;
+	unsigned int l, m, i, j, div;
 
 	l = n;
 	m = 0;
