@@ -5,7 +5,7 @@
  * @str: a pointer to string
  *
  * Description:  a function that prints a string, followed by
- * 		a new line, to stdout.
+ * a new line, to stdout.
  */
 void _puts(char *str)
 {
