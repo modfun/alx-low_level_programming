@@ -1,37 +1,21 @@
 #include "main.h"
 
 /**
-* _strlen - returns the length of a string.
-* @s: a pointer to a char
-* Return: length of a string
-**/
-
-int _strlen(char *s)
-{
-	int l, i = 0;
-
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	l = i;
-	return (l);
-}
-
-/**
-* puts2 - prints one char out of 2 of a string
-* @str: a pointer to string
-* Return: nothing
-**/
-
+ * puts2 - print string
+ * @str: a pointer to string
+ *
+ * Description: Write a function that prints every other character
+ * of a string, starting with the first character, followed by a new line.
+ */
 void puts2(char *str)
 {
-	int i;
-	int size = _strlen(str);
+	int i = 0;
 
-	for (i = 0; i < size; i += 2)
+	while (*(str + i) != '\0')
 	{
-		_putchar(str[i]);
+		if (i % 2 != 0)
+			_putchar(*(str + i));
+		i++;
 	}
 	_putchar('\n');
 }
