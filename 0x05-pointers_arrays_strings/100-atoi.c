@@ -1,11 +1,10 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * _atoi -
+ * _atoi - convert number form string to integer
  * @s: a pointer to string
  *
- * Description:
+ * Description: a function that convert a string to an integer.
  * Return: an int value
  */
 int _atoi(char *s)
@@ -31,7 +30,6 @@ int _atoi(char *s)
 		{
 			lastNumber = 1;
 			digit = s[i] - 48;
-			printf("D: digit=%d of %c\n", digit, s[i]);
 			num = (num * 10) + digit;
 		}
 		else if (lastNumber == 1)
