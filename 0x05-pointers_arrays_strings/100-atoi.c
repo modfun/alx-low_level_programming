@@ -2,37 +2,41 @@
 #include <stdio.h>
 
 /**
- * _atoi - converests a string to an integer
- * @s: string to convert
- * Return: numbre
+ * _atoi -
+ * @s: a pointer to string
+ *
+ * Description:
+ * Return: an int value
  */
-
-
 int _atoi(char *s)
 {
-	int n, i, m;
+	int i = 0, minus = 0, num = 0;
+	int lastNumber = 0;
+	int digit;
 
-	m = 1;
-	i = n = 0;
 	while ((s[i] < '0' || s[i] > '9') && s[i] != 0)
 	{
 		if (s[i] == '-')
-			m = m * -1;
+			minus++;
 		i++;
 	}
-	while ((s[i] >= '0' && s[i] <= '9') && s[i] != 0)
+	if (minus % 2 != 0)
+		minus = -1;
+	else
+		minus = 1;
+
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (n >= 0)
+		if (s[i] >= '0' && s[i] <= '9')
 		{
-			n = n * 10 - (s[i] - '0');
-			i++;
+			lastNumber = 1;
+			digit = s[i] - 48;
+			printf("D: digit=%d of %c\n", digit, s[i]);
+			num = (num * 10) + digit;
 		}
-		else
-		{
-			n = n * 10 - (s[i] - '0');
-			i++;
-		}
+		else if (lastNumber == 1)
+			break;
 	}
-	m = m * -1;
-	return (n * m);
+
+	return (num * minus);
 }
