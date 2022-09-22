@@ -3,11 +3,8 @@
 /**
 * _strlen - calculate string length
 * @a: string
-<<<<<<< HEAD
-* Return: lenght of string
-=======
+*
 * Return: lengh
->>>>>>> 66a7e64280d884ae783b6ff5258e667ccd7a2047
 **/
 int _strlen(char *a)
 {
@@ -20,19 +17,12 @@ int _strlen(char *a)
 
 /**
 * *infinite_add - adds two numbers
-<<<<<<< HEAD
 * @n1: string
 * @n2: string
 * @r: string
 * @size_r: int
+*
 * Return: 0
-=======
-* @n1: number1
-* @n2: number2
-* @r: buffer to store result
-* @size_r: buffer size
-* Return: pointer to the result
->>>>>>> 66a7e64280d884ae783b6ff5258e667ccd7a2047
 **/
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {

@@ -22,7 +22,7 @@ void print_buffer(char *b, int size)
 	{
 		printf("%8.8x:", c);
 		d = 0;
-		while (d < 10 )
+		while (d < 10)
 		{
 			printf("%02x", b[c + d]);
 			if ((d % 2 == 0 && d != 0) || (c + d > size - 1))
