@@ -1,34 +1,27 @@
 #include "main.h"
 
 /**
- * rot13 - encrypt using rot13
- * @s: a pointer to string
+ * rot13 - encodes a string in rot13
+ * @s: string to be encoded
  *
- * Description: a function that encodes a string using rot13.
- * Return: a pointer to string
+ * Return: the resulting string
  */
 char *rot13(char *s)
 {
-	int i = 0;
-	int k = 0;
-	int rot[27] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',\
-		'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',\
-		'X', 'Y', 'Z'};
+	int i, j;
+	char a[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char b[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	while (s[i] != 0)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		k = 0;
-		while (k < 27 && ((s[i] >= 'a' && s[i] <= 'z') ||\
-					(s[i] >= 'A' && s[i] <= 'Z')))
+		for (j = 0; a[j] != '\0'; j++)
 		{
-			if (s[i] == rot[k] || s[i] == (rot[k] + 32))
+			if (s[i] == a[j])
 			{
-				s[i] = rot[(k + 14) % 27] + (s[i] - rot[k]);
+				s[i] = b[j];
+				break;
 			}
-			k++;
 		}
-		i++;
 	}
-
 	return (s);
 }
