@@ -1,65 +1,74 @@
 #include "main.h"
+#include <string.h>
 
 /**
-* _strlen - calculate string length
-* @a: string
-*
-* Return: lengh
-**/
-int _strlen(char *a)
+ * rev_string - reverse a string
+ * @s: a pointer to string
+ *
+ * Description: a function that reverses a string.
+ */
+void rev_string(char *s)
 {
+	int count = 0;
 	int i = 0;
+	char tmp;
 
-	while (*a != '\0')
-		i++, a++;
-	return (i);
+	while (*(s + count) != '\0')
+		count++;
+
+	for (i = 0; i < (count / 2); i++)
+	{
+		tmp = *(s + i);
+		*(s + i) = *(s + (count - i - 1));
+		*(s + (count - i - 1)) = tmp;
+	}
 }
 
 /**
-* *infinite_add - adds two numbers
-* @n1: string
-* @n2: string
-* @r: string
-* @size_r: int
-*
-* Return: 0
-**/
+ * infinite_add - add two numbers
+ * @n1: a pointer to number one
+ * @n2: a pointer to number two
+ * @r: a pointer to the buffer
+ * @size_r: the buffer size
+ *
+ * Description: a function that adds two numbers.
+ * Return: a pointer to the result.
+ */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int k, n2_s, n1_s, m;
+	int carry = 0;
+	int len1 = strlen(n1);
+	int len2 = strlen(n2);
+	int d1, d2;
+	int i = 0;
 
-	r[size_r] = '\0';
-	k = 0;
-	m = 0;
-	n1_s = _strlen(n1);
-	n2_s = _strlen(n2);
-	size_r--;
-	if (n1_s > size_r || n2_s > size_r || size_r == 0 ||
-	    (n1_s == size_r && n2_s == size_r &&
-	     (n1[0] - '0') + (n2[0] - '0') > 9))
+	rev_string(n1);
+	rev_string(n2);
+
+	while (i < len1 || i < len2 || carry != 0)
 	{
-		return (0);
-	}
-	n1_s--;
-	n2_s--;
-	while (n1_s >= 0 || n2_s >= 0)
-	{
-		if (n1_s < 0)
-			m = n2[n2_s] - '0' + k;
-		else if (n2_s < 0)
-			m = n1[n1_s] - '0' + k;
+		if (i >= len1)
+			d1 = 0;
 		else
-			m = (n1[n1_s] - '0') + (n2[n2_s] - '0') + k;
-		r[size_r] = (m % 10) + '0';
-		k = m / 10;
-		n1_s--, n2_s--, size_r--;
+			d1 = n1[i];
+		if (i >= len2)
+			d2 = 0;
+		else
+			d2 = n2[i];
+
+		if (i >= size_r)
+			return (0);
+		r[i] = (d1 + d2 + carry) % 10;
+		carry = (d1 + d2 + carry) / 10;
+
+		i++;
 	}
-	if (size_r > 0 && (k < 9 && k > 0))
-	{
-		r[size_r] = k + '0';
-		return (r + size_r);
-	}
-	else if (k == 0)
-		return (r + size_r);
-	return (0);
+	if (i < size_r)
+		r[i] = '\0';
+
+	rev_string(n1);
+	rev_string(n2);
+	rev_string(r);
+
+	return(r);
 }
