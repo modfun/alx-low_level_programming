@@ -1,67 +1,74 @@
 #include "main.h"
+#include <string.h>
+#include <stdio.h>
 
 /**
-* _strlen - return string length
-* @a: string
-*
-* Return: length
-**/
-int _strlen(char *a)
+ * strrev - reverse a string
+ * @s: a pointer to string
+ *
+ * Description: a function to reverse a string
+ * Return: a pointer to string
+ */
+char *strrev(char *s)
 {
-	int i = 0;
+	int i, tmp = 0;
+	int len = 0;
 
-	while (*a != '\0')
-		i++, a++;
-	return (i);
+	for (i = 0; s[i] != '\0'; i++)
+		len++;
+
+	for (i = 0; i < (len / 2); i++)
+	{
+		tmp = *(s + i);
+		*(s + i) = *(s + (len - i - 1));
+		*(s + (len - i - 1)) = tmp;
+	}
+
+	return (s);
 }
 
 /**
- * infinite_add - add two numbers
- * @n1: a pointer to number one
- * @n2: a pointer to number two
- * @r: a pointer to the buffer
- * @size_r: the buffer size
+ * infinite_add - add numbers in strings
+ * @n1: first number
+ * @n2: second number
+ * @r: buffer
+ * @size_r: buffer size
  *
  * Description: a function that adds two numbers.
- * Return: a pointer to the result.
+ * Return: a pointer to string (r).
  */
-
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int k, n2_s, n1_s, m;
+	char nOne[10000];
+	char nTwo[10000];
+	int d1, d2, i;
+	int carry = 0;
+	int n1_len = strlen(n1);
+	int n2_len = strlen(n2);
 
-	r[size_r] = '\0';
-	k = 0;
-	m = 0;
-	n1_s = _strlen(n1);
-	n2_s = _strlen(n2);
-	size_r--;
-	if (n1_s > size_r || n2_s > size_r || size_r == 0 ||
-	    (n1_s == size_r && n2_s == size_r &&
-	     (n1[0] - '0') + (n2[0] - '0') > 9))
+	strcpy(nOne, n1);
+	strcpy(nTwo, n2);
+	strrev(nOne);
+	strrev(nTwo);
+
+	i = 0;
+	while (i < n1_len || i < n2_len || carry != 0)
 	{
-		return (0);
+		d1 = 0;
+		d2 = 0;
+		if (i < n1_len)
+			d1 = nOne[i] - '0';
+		if (i < n2_len)
+			d2 = nTwo[i] - '0';
+		if (size_r - 1 <= i)
+			return (0);
+
+		r[i] = ((d1 + d2 + carry) % 10) + '0';
+		carry = (d1 + d2 + carry) / 10;
+
+		i++;
 	}
-	n1_s--;
-	n2_s--;
-	while (n1_s >= 0 || n2_s >= 0)
-	{
-		if (n1_s < 0)
-			m = n2[n2_s] - '0' + k;
-		else if (n2_s < 0)
-			m = n1[n1_s] - '0' + k;
-		else
-			m = (n1[n1_s] - '0') + (n2[n2_s] - '0') + k;
-		r[size_r] = (m % 10) + '0';
-		k = m / 10;
-		n1_s--, n2_s--, size_r--;
-	}
-	if (size_r > 0 && (k < 9 && k > 0))
-	{
-		r[size_r] = k + '0';
-		return (r + size_r);
-	}
-	else if (k == 0)
-		return (r + size_r);
-	return (0);
+
+	strrev(r);
+	return (r);
 }
