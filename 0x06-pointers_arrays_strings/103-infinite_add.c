@@ -68,6 +68,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 
 		i++;
 	}
+	r[size_r - 1] = '\0';
 
 	strrev(r);
 	return (r);
