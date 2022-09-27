@@ -1,31 +1,53 @@
 #include "main.h"
+#include <string.h>
+#include <stddef.h>
 
 /**
-* _strstr - this function locates a substring
-* @haystack:character string
-* @needle:character string
-*
-* Return: a pointer to the beginning of substring or NULL
-**/
+ * _strstr - locate a substring
+ * @haystack: string to search
+ * @needle: substring to find
+ *
+ * Description: a function that locates a substring.
+ * Return: a pointer to the located substring or NULL.
+ */
 char *_strstr(char *haystack, char *needle)
 {
-	int i;
-	int j;
-	int l;
+	int hay_len = strlen(haystack);
+	int nee_len = strlen(needle);
+	int i, j;
+	int flag;
 
-	for (i = 0; haystack[i] != '\0'; i++)
+	if (nee_len > hay_len)
+		return (NULL);
+	else if (nee_len == hay_len)
 	{
-		for (l = i, j = 0; needle[j] != '\0'; j++, l++)
+		for (i = 0; needle[i] != 0; i++)
 		{
-			if (needle[j] != haystack[l] || haystack[l] == '\0')
-			{
-				break;
-			}
+			if (needle[i] != haystack[i])
+				return (NULL);
 		}
-		if (needle[j] == '\0')
+		return (haystack + 0);
+	}
+	for (i = 0; i <= (hay_len - nee_len) && haystack[i] != 0; i++)
+	{
+		if (haystack[i] == needle[0])
 		{
-			return (haystack + i);
+			flag = 0;
+			for (j = 0; needle[j] != '\0'; j++)
+			{
+
+				if (haystack[i + j] == needle[j])
+					flag = 1;
+				else
+				{
+					flag = 0;
+					break;
+				}
+			}
+			if (flag)
+				return (haystack + i);
 		}
 	}
-	return (0);
+
+	return (NULL);
 }
