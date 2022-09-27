@@ -17,6 +17,8 @@ char *_strstr(char *haystack, char *needle)
 	int i, j;
 	int flag;
 
+	if (nee_len == 0)
+		return (haystack);
 	if (nee_len > hay_len)
 		return (NULL);
 	else if (nee_len == hay_len)
