@@ -1,27 +1,34 @@
 #include "main.h"
+
+int isprime(int n, int i);
+
 /**
-* is_prime_number - returns a prime number
-* @n: takes in an integer
-* Return: 1 if n a prime number or 0 if not prime
-**/
+ * is_prime_number - is prime number ?
+ * @n: a number
+ *
+ * Description: a function to find if a number is prime.
+ * Return: 1 if number is prime otherwise 0
+ */
 int is_prime_number(int n)
 {
-if (n == 1 || n < 0)
-return (0);
-return (pnumber(2, n));
-
+	return (isprime(n, 2));
 }
+
 /**
-* pnumber - help me to find the prime number
-* @x: integer
-* @n: integer
-* Return: 1 if prime or 0 if not
-**/
-int pnumber(int x, int n)
+ * isprime - is prime ?
+ * @n: number
+ * @i: divisor
+ *
+ * Return: 1 if true otherwise 0
+ */
+int isprime(int n, int i)
 {
-	if (n == x)
-		return (1);
-	else if (n % x == 0)
+	if (n <= 2)
+		return ((n == 2) ? 1 : 0);
+	if (n % i == 0)
 		return (0);
-	return (pnumber(x + 1, n));
+	if (i * i > n)
+		return (1);
+
+	return (isprime(n, i + 1));
 }
