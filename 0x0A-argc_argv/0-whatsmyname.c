@@ -1,17 +1,17 @@
 #include <stdio.h>
 
 /**
-* main - entry point
-* @argc: size of argv
-* @argv: array
-* Return: 0
-**/
-
-int main(int argc, char *argv[])
+ * main - Entry Point
+ * @argc: count of arguments
+ * @argv: vector of arguments
+ *
+ * Description: print the name of the program
+ * Return: Always 0 (Success)
+ */
+int main(int argc, char **argv)
 {
-	int i;
+	(void) argc;
 
-	for (i = 0; i < argc; i++)
-		printf("%s\n", argv[i]);
+	printf("%s\n", argv[0]);
 	return (0);
 }
