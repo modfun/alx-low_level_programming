@@ -1,15 +1,15 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
-* main - entry point
-* @argc: size of argv
-* @argv: array
-* Return: 0
-**/
-int main(int argc, char *argv[] __attribute__((unused)))
+ * main - Entry Point
+ * @argc: count of arguments
+ * @argv: vector of arguments
+ *
+ * Description: print count of arguments.
+ * Return: Always 0 (Success)
+ */
+int main(int argc, char **argv __attribute__((__unused__)))
 {
-	if (argc > 0)
-		printf("%d\n", argc - 1);
+	printf("%d\n", argc);
 	return (0);
 }
