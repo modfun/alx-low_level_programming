@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int isNumber(char *s);
+
 /**
  * main - Entry Point
  * @argc: count of arguments
@@ -19,7 +21,7 @@ int main(int argc, char **argv)
 
 	for (i = 1; i < argc; i++)
 	{
-		if (atoi(argv[i]) == 0)
+		if (isNumber(argv[i]) == 0)
 		{
 			printf("Error\n");
 			return (1);
@@ -29,4 +31,25 @@ int main(int argc, char **argv)
 	printf("%d\n", sum);
 
 	return (0);
+}
+
+/**
+ * isNumber - is the stirng a number
+ * @s: a pointer to string
+ *
+ * Description: only checks if string is digits (doesn't account for - or +)
+ * Return: 1 (true) or 0 (false)
+ */
+int isNumber(char *s)
+{
+	int i;
+
+	for (i = 0; s[i] != 0; i++)
+	{
+		if (s[i] >= '0' && s[i] <= '9')
+			continue;
+		else
+			return (0);
+	}
+	return (1);
 }
