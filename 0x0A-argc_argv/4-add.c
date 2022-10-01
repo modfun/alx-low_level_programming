@@ -1,43 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
+
 /**
-* main - entry point
-* @argc: size of argv
-* @argv: array
-* Return: 0
-**/
-int main(int argc, char *argv[])
+ * main - Entry Point
+ * @argc: count of arguments
+ * @argv: vector of arguments
+ *
+ * Description: add numbers in argument vector and print result.
+ * Return: Always 0 (Success)
+ */
+int main(int argc, char **argv)
 {
-	int i, j, add = 0;
+	int i;
+	int sum = 0;
+
+	if (argc < 2)
+		printf("0\n");
 
 	for (i = 1; i < argc; i++)
 	{
-		if (argv[i][0] == '-')
+		if (atoi(argv[i]) == 0)
 		{
-			for (j = 1; argv[i][j] != '\0'; j++)
-			{
-				if (isdigit(argv[i][j]) == 0)
-				{
-					printf("Error\n");
-					return (1);
-				}
-			}
+			printf("Error\n");
+			return (1);
 		}
-		else
-		{
-			for (j = 0; argv[i][j] != '\0'; j++)
-			{
-				if (isdigit(argv[i][j]) == 0)
-				{
-					printf("Error\n");
-					return (1);
-				}
-			}
-		}
-		add += atoi(argv[i]);
+		sum += atoi(argv[i]);
 	}
-	printf("%d\n", add);
+	printf("%d\n", sum);
+
 	return (0);
 }
