@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
-#include <stdio.h>
 
 /**
  * alloc_grid - allocate a two dimensional array
@@ -31,10 +30,8 @@ int **alloc_grid(int width, int height)
 
 	for (i = 0; i < height; i++)
 	{
-		printf("[Debug] i = %d\n", i);
 		for (j = 0; j < width; j++)
 		{
-			printf("[Debug] j = %d\n", j);
 			p[i][j] = 0;
 		}
 	}
