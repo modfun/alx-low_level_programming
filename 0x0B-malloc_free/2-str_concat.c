@@ -17,10 +17,7 @@ char *str_concat(char *s1, char *s2)
 	int i, size = 0, size1 = 0, size2 = 0;
 
 	if (s1 == NULL && s2 == NULL)
-	{
-		p = "";
-		return (p);
-	}
+		size = 0;
 	else if (s1 == NULL)
 	{
 		size = strlen(s2);
@@ -37,6 +34,7 @@ char *str_concat(char *s1, char *s2)
 		size2 = strlen(s2);
 		size = size1 + size2;
 	}
+
 	p = malloc(size + 1);
 	if (p == NULL)
 		return (NULL);
@@ -51,5 +49,6 @@ char *str_concat(char *s1, char *s2)
 			p[i] = s2[i - size1];
 	}
 	p[size] = '\0';
+
 	return (p);
 }
