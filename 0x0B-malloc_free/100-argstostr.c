@@ -1,7 +1,5 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stddef.h>
-#include <string.h>
 
 /**
  * argstostr - convert program arguments to a string
