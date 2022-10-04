@@ -14,11 +14,15 @@ char **create_words(char **words, char *str);
 char **strtow(char *str)
 {
 	char **words;
+	int wc;
 
 	if (str == NULL || str[0] == '\0')
 		return (NULL);
+	wc = count_words(str);
+	if (wc == 0)
+		return (NULL);
 
-	words = malloc(sizeof(char *) * (count_words(str) + 1));
+	words = malloc(sizeof(char *) * (wc + 1));
 	if (words == NULL)
 		return (NULL);
 
