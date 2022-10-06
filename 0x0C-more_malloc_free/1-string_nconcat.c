@@ -19,7 +19,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	char *constr;
 
 	if (s1 == NULL && s2 == NULL)
-		return (NULL);
+	{
+		constr = malloc(0);
+		if (constr == NULL)
+			return (NULL);
+		return (constr);
+	}
 	else if (s1 == NULL)
 		return (n < strlen(s2) ? getNbytes(s2, n) : getNbytes(s2, strlen(s2)));
 	else if (s2 == NULL)
