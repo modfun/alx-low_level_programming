@@ -1,8 +1,5 @@
 #include "main.h"
 #include <stdlib.h>
-#include <string.h>
-
-char *getNbytes(char *s2, unsigned int n);
 
 /**
  * string_nconcat - string concatenation of n bytes
