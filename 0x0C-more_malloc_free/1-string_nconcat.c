@@ -23,7 +23,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		constr = malloc(1);
 		if (constr == NULL)
 			return (NULL);
-		constr[1] = '\0';
+		constr[0] = '\0';
 		return (constr);
 	}
 	else if (s1 == NULL)
