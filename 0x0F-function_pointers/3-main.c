@@ -20,8 +20,13 @@ int main(int ac, char **av)
 		exit(98);
 	}
 
+	if (av[2][1] != '\0')
+	{
+		printf("Error\n");
+		exit(99);
+	}
 	f = get_op_func(av[2]);
-	if (f == NULL || av[2][1] != '\0')
+	if (f == NULL)
 	{
 		printf("Error\n");
 		exit(99);
