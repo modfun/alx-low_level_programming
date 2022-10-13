@@ -1,31 +1,39 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 /**
- * main - function to print its own opcode
- * @argc: number of arguments
- * @argv: argument variables passed
- * Return: Always 0/
+ * main - Usage: ./main number_of_bytes
+ * @ac: argument count
+ * @av: argument vector
+ *
+ * Description: a program that prints the opcodes of its own main function.
+ * Return: 0 (Success) or 1 (ac Error) or 2 (negative number of bytes).
  */
-int main(int argc, char **argv)
+int main(int ac, char **av)
 {
-	int a, b;
-	char *s;
+	int i;
+	int bytes;
+	int (*m)(int, char **) = &main;
+	char *opstring = (char *)m;
 
-	if (argc < 2)
+	if (ac != 2)
 	{
 		printf("Error\n");
 		exit(1);
 	}
-	a = atoi(argv[1]);
-	if (a < 0)
+
+	bytes = atoi(av[1]);
+	if (bytes < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
-	s = (char *)main;
-	for (b = 0; b < a - 1; b++)
-		printf("%02hhx ", s[b]);
-	printf("%02hhx\n", s[b]);
+
+	for (i = 0; i < bytes - 1; i++)
+		printf("%02hhx ", opstring[i]);
+	printf("%02hhx", opstring[i]);
+	putchar('\n');
+
 	return (0);
 }
